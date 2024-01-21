@@ -31,7 +31,6 @@ def janken
 end
 
 puts "最初はグー、ジャイケンポイ！"
-
 next_play = true
 while next_play do  # 次のプレイをtrue条件による継続コーディング!!
   next_play = janken
