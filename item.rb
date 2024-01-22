@@ -55,7 +55,7 @@ end
 
 items = []  # 必要な商品データ情報
 
-# 所持金
+# 所持金である初期設定
 puts "初めの所持金(円)を入力して下さい！"
 money = gets.to_i
 
@@ -66,7 +66,7 @@ while true do
   puts "[2]店舗から出て終了"
   input = gets.to_i
 
-  puts "残金:#{money}"
+  puts "残金:#{money}"  # 残金の計算値
 
   if input == 0
     register_item(items)
