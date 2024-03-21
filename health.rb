@@ -52,14 +52,15 @@ puts "[3]現在のストレスチェックで健康レベルを計測する"
 puts "[4]終了する"
 input = gets.to_i
 
+while true do
   case input
-    when 0
-      def register_health(healths)
-    when 1
-      def index_health(healths)
-    when 2
-      exit
-    else
-      puts "受診内容[種類番号]が無い為、再度入力し直して下さい！"
-    end
+  when 0
+    def register_health(healths)
+  when 1
+    def index_health(healths)
+  when 2
+    exit
+  else
+    puts "受診内容[種類番号]が無い為、再度入力し直して下さい！"
   end
+end
