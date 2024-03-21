@@ -37,7 +37,9 @@ def show_health(health)
   puts "移動距離：#{health[:distance]}"
   puts "身長：#{health[:height]}"
   puts "体重：#{health[:weight]}"
+end
 
+def data_health(healths)
 end
 
 
@@ -59,6 +61,7 @@ while true do
   when 1
     def index_health(healths)
   when 2
+    def data_health(healths)
   when 3
   when 4
     exit
