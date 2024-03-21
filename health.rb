@@ -53,7 +53,11 @@ puts "[4]終了する"
 input = gets.to_i
 
 case input
-when 0
-    def register_health(healths)
-when 1
-    def index_health(healths)
+  when 0
+      def register_health(healths)
+  when 1
+      def index_health(healths)
+  when 2
+      exit
+      
+end
