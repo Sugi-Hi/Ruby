@@ -59,6 +59,8 @@ while true do
   when 1
     def index_health(healths)
   when 2
+  when 3
+  when 4
     exit
   else
     puts "受診内容[種類番号]が無い為、再度入力し直して下さい！"
