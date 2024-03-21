@@ -19,6 +19,19 @@ def register_health(healths)
 end
 
 
+def index_health(healths)
+
+  puts "健康管理データを見たい人の登録番号を入力して下さい。"
+  healths.each_with_index do |health, index|
+    puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒速度:#{health[:distance]/health[:walktime]}[km/h]"
+  end
+  input = gets.to_i
+  
+  show_health(health[input-1])
+
+end
+
+
 
 healths = []
 
