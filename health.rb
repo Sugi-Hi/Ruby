@@ -42,6 +42,8 @@ end
 def data_health(healths)
 end
 
+def stress_health(healths)
+end
 
 healths = []
 
@@ -57,12 +59,13 @@ option = gets.to_i
 while true do
   case option
   when 0
-    def register_health(healths)
+    register_health(healths)
   when 1
-    def index_health(healths)
+    index_health(healths)
   when 2
-    def data_health(healths)
+    data_health(healths)
   when 3
+    stress_health(healths)
   when 4
     exit
   else
