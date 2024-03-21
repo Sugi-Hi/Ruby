@@ -30,7 +30,15 @@ def index_health(healths)
   show_health(health[input-1])
 
 end
+def show_health(health)
+  puts "氏名：#{health[:name]}"
+  puts "年齢：#{health[:age]}"
+  puts "歩行時間：#{health[:walktime]}"
+  puts "移動距離：#{health[:distance]}"
+  puts "身長：#{health[:height]}"
+  puts "体重：#{health[:weight]}"
 
+end
 
 
 healths = []
