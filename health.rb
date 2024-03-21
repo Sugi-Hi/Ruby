@@ -52,12 +52,14 @@ puts "[3]現在のストレスチェックで健康レベルを計測する"
 puts "[4]終了する"
 input = gets.to_i
 
-case input
-  when 0
+  case input
+    when 0
       def register_health(healths)
-  when 1
+    when 1
       def index_health(healths)
-  when 2
+    when 2
       exit
-      
-end
+    else
+    
+    end
+  end
