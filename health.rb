@@ -37,26 +37,29 @@ def show_health(health)
   puts "移動距離：#{health[:distance]}"
   puts "身長：#{health[:height]}"
   puts "体重：#{health[:weight]}"
+  stress_health(health)
+end
+def stress_health(health)
 end
 
 def data_health(healths)
 end
 
-def stress_health(healths)
+def status_health(healths)
 end
-
 healths = []
 
 
 puts "健康診断への受診内容[種類番号]を入力して下さい。"
 puts "[0]健康診断での受診者を登録する"
 puts "[1]健康診断の全受診者を一覧リストで表示する"
-puts "[2]健康状態の目安となる数値データで表記する"
-puts "[3]現在のストレスチェックで健康レベルを計測する"
+puts "[2]健康状態の目安となる数値データで取り出す"
+puts "[3]現在のストレスチェックから健康状態を表記する"
 puts "[4]終了する"
 option = gets.to_i
 
 while true do
+
   case option
   when 0
     register_health(healths)
@@ -65,10 +68,11 @@ while true do
   when 2
     data_health(healths)
   when 3
-    stress_health(healths)
+    status_health(healths)
   when 4
     exit
   else
     puts "受診内容[種類番号]が無い為、再度入力し直して下さい！"
   end
+
 end
