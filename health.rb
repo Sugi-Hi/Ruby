@@ -23,7 +23,7 @@ def index_health(healths)
 
   puts "健康管理データを見たい人の登録番号を入力して下さい。"
   healths.each_with_index do |health, index|
-    puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒速度:#{health[:distance]/health[:walktime]}[km/h]"
+    puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒速度:#{(health[:distance]*0.001)/(health[:walktime]/60)}[km/h]"
   end
   input = gets.to_i
   
@@ -32,20 +32,24 @@ def index_health(healths)
 end
 def show_health(health)
   puts "氏名：#{health[:name]}"
-  puts "年齢：#{health[:age]}"
-  puts "歩行時間：#{health[:walktime]}"
-  puts "移動距離：#{health[:distance]}"
-  puts "身長：#{health[:height]}"
-  puts "体重：#{health[:weight]}"
-  stress_health(health)
+  puts "年齢：#{health[:age]}歳"
+  puts "歩行時間：#{health[:walktime]}分"
+  puts "移動距離：#{health[:distance]}m(メートル)"
+  puts "身長：#{health[:height]*100}cm(センチメートル)"
+  puts "体重：#{health[:weight]}kg(キログラム)"
+  data_health(health)
 end
-def stress_health(health)
+def data_health(health)
+  puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒BMI(体脂肪率):#{health[:height]/health[:weight]/health[:weight]}"
+
 end
 
-def data_health(healths)
+
+def stress_health(healths)
+
 end
 
-def status_health(healths)
+def status_health(health)
 end
 healths = []
 
