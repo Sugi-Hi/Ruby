@@ -38,7 +38,7 @@ condition do |c|
 end
 
 
-# ======  クラス継承  ===================
+# ======  医療情報  ====================
 
 class Recover
 
@@ -64,3 +64,9 @@ end
 
 care = Care.new( "救急治療", 150)
 care.info
+
+
+# ======  標準ライブラリ(日付)  =========
+require "date"
+
+puts Date.today
