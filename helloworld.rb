@@ -1,3 +1,8 @@
-#
-puts "Hello World"
-# この行は実行なし
+def greeting
+  puts "Hello,everyone."
+  yield
+end
+
+greeting do
+  puts "Nice to meet you!"
+end
