@@ -28,7 +28,6 @@ student.introduce
 
 # ======  体調　  ======================
 
-
 def condition(&energy)
   puts "How are you?"
   energy.call("I'm fine now!")
@@ -39,3 +38,29 @@ condition do |c|
 end
 
 
+# ======  クラス継承  ===================
+
+class Recover
+
+  def initialize( kind, volume )
+    @kind = kind
+    @volume = volume
+  end
+
+  def info
+    puts "回復法：#{@kind} 、含有量：#{@volume}g"
+  end
+
+end
+
+class Care < Recover
+
+  def info
+    quality = "専門医療"
+    puts "回復法：#{@kind} 、含有量：#{@volume}g、質：#{quality} "
+  end    
+
+end
+
+care = Care.new( "救急治療", 150)
+care.info
