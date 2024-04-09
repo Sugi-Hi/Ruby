@@ -21,9 +21,35 @@ class Car
 
 end
 
-
-
 fire_truck = Car.new('消防車', '大型車', 5)
 fire_truck.ride_car(3)
 
 Car.run
+
+
+# ======  クラス継承  ===================
+
+class Recover
+
+  def initialize( kind, volume )
+    @kind = kind
+    @volume = volume
+  end
+
+  def info
+    puts "回復法：#{@kind} 、含有量：#{@volume}g"
+  end
+
+end
+
+class Care < Recover
+
+  def info
+    quality = "専門医療"
+    puts "回復法：#{@kind} 、含有量：#{@volume}g、質：#{quality} "
+  end    
+
+end
+
+care = Care.new( "救急治療", 150)
+care.info
