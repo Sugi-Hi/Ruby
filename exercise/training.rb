@@ -39,7 +39,6 @@ condition do |c|
 end
 
 
-<<<<<<< HEAD
 # ======  医療情報  ====================
 
 class Recover
@@ -72,5 +71,11 @@ care.info
 require "date"
 
 puts Date.today
-=======
->>>>>>> parent of be81c2d (親子クラス継承)
+
+
+# ======  外部ライブラリ(Gem)  =========
+require 'faker'
+
+puts Faker::Name.name
+# puts Faker::Address.address
+# puts Faker::Age.age
