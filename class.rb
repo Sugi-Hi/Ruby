@@ -18,7 +18,10 @@ class Car
       puts "#{ride_number}人乗車できました。"
     end
   end
+
 end
+
+
 
 fire_truck = Car.new('消防車', '大型車', 5)
 fire_truck.ride_car(3)
