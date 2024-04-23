@@ -39,10 +39,13 @@ def show_health(health)
   puts "移動距離：#{health[:distance]}m(メートル)"
   puts "身長：#{health[:height]*100}cm(センチメートル)"
   puts "体重：#{health[:weight]}kg(キログラム)"
-  data_health(health)
 end
-def data_health(health)
-  puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒BMI(体脂肪率):#{health[:bmi]}"
+
+def data_health(healths)
+  healths.each_with_index do |health, index|
+    puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒BMI(体脂肪率):#{health[:bmi]}"
+  end
+  
   if bmi > 24
     puts "痩せる事を考えましょう！"
   elsif bmi < 20
