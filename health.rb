@@ -40,7 +40,8 @@ def show_health(health)
   data_health(health)
 end
 def data_health(health)
-  puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒BMI(体脂肪率):#{health[:height]/health[:weight]/health[:weight]}"
+  bmi = health[:weight]/health[:height]/health[:height]
+  puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒BMI(体脂肪率):#{bmi}"
 
 end
 
