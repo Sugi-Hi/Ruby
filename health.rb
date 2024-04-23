@@ -13,6 +13,8 @@ def register_health(healths)
   health[:height] = (gets.to_f) * 0.01  # 単位(cm)⇒(m)
   puts "体重(kg)を入力した下さい。"
   health[:weight] = (gets.to_f)
+  BMI = health[:weight]/health[:height]/health[:height]
+  health[:bmi] = BMI
  
   healths << health
 
@@ -40,7 +42,6 @@ def show_health(health)
   data_health(health)
 end
 def data_health(health)
-  bmi = health[:weight]/health[:height]/health[:height]
   puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒BMI(体脂肪率):#{bmi}"
   if bmi > 24
     puts "痩せる事を考えましょう！"
