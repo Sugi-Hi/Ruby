@@ -42,7 +42,7 @@ def show_health(health)
   data_health(health)
 end
 def data_health(health)
-  puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒BMI(体脂肪率):#{bmi}"
+  puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒BMI(体脂肪率):#{health[:bmi]}"
   if bmi > 24
     puts "痩せる事を考えましょう！"
   elsif bmi < 20
