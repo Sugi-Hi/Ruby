@@ -14,7 +14,7 @@ def register_health(healths)
   puts "体重(kg)を入力した下さい。"
   health[:weight] = (gets.to_f)
   
-  health[:bmi] = health[:weight] / health[:height] / health[:height]
+  health[:bmi] = (health[:weight] / health[:height] / health[:height]).to_f
 
   healths << health
 
@@ -72,8 +72,8 @@ while true do
 puts "健康診断への受診内容[種類番号]を入力して下さい。"
 puts "[0]健康診断での受診者を登録する"
 puts "[1]健康診断の全受診者を一覧リストで表示する"
-puts "[2]健康状態の目安となる数値データで取り出す"
-puts "[3]現在のストレスチェックから健康状態を表記する"
+puts "[2]健康状態の体脂肪率の数値データ評価を列挙する"
+puts "[3]現在のストレスチェックから健康状態をレベル表記する"
 puts "[4]終了する"
 option = gets.to_i
 
@@ -85,11 +85,11 @@ option = gets.to_i
   when 2
     data_health(healths)
   when 3
-    status_health(healths)
+    stress_health(healths)
   when 4
     exit
   else
-    puts "受診内容[種類番号]が無い為、再度入力し直して下さい！"
+    puts "受診内容[種類番号]が無い為、再度入力し直して下さい！\n"
   end
 
 end
