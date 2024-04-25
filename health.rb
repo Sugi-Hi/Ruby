@@ -13,9 +13,9 @@ def register_health(healths)
   health[:height] = (gets.to_f) * 0.01  # 単位(cm)⇒(m)
   puts "体重(kg)を入力した下さい。"
   health[:weight] = (gets.to_f)
-  BMI = health[:weight]/health[:height]/health[:height]
-  health[:bmi] = BMI
- 
+  
+  health[:bmi] = health[:weight] / health[:height] / health[:height]
+
   healths << health
 
 end
@@ -29,8 +29,7 @@ def index_health(healths)
   end
   input = gets.to_i
   
-  show_health(health[input-1])
-
+  show_health(healths[input-1])
 end
 def show_health(health)
   puts "氏名：#{health[:name]}"
@@ -39,6 +38,7 @@ def show_health(health)
   puts "移動距離：#{health[:distance]}m(メートル)"
   puts "身長：#{health[:height]*100}cm(センチメートル)"
   puts "体重：#{health[:weight]}kg(キログラム)"
+  puts "BMI値:#{health[:bmi]}"
 end
 
 def data_health(healths)
@@ -62,8 +62,12 @@ end
 
 def status_health(health)
 end
+
+
 healths = []
 
+
+while true do
 
 puts "健康診断への受診内容[種類番号]を入力して下さい。"
 puts "[0]健康診断での受診者を登録する"
@@ -72,8 +76,6 @@ puts "[2]健康状態の目安となる数値データで取り出す"
 puts "[3]現在のストレスチェックから健康状態を表記する"
 puts "[4]終了する"
 option = gets.to_i
-
-while true do
 
   case option
   when 0
