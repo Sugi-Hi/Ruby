@@ -6,15 +6,16 @@ def register_health(healths)
   puts "年齢を入力した下さい。"
   health[:age] = gets.to_i
   puts "歩行時間(分)を入力した下さい。"
-  health[:walktime] = (gets.to_i) / 60
+  health[:walktime] = (gets.to_i) / 60  # 単位(分)⇒(時)
   puts "移動距離(m)を入力した下さい。"
-  health[:distance] = (gets.to_i) / 1000
+  health[:distance] = (gets.to_i) / 1000  # 単位(m)⇒(km)
   puts "身長(cm)を入力した下さい。"
   health[:height] = (gets.to_f) * 0.01  # 単位(cm)⇒(m)
   puts "体重(kg)を入力した下さい。"
   health[:weight] = (gets.to_f)
   
-  health[:bmi] = (health[:weight] / health[:height] / health[:height]).to_f
+  health[:speed] = (health[:distance]/health[:walktime]).to_f.round(1)
+  health[:bmi] = (health[:weight] / health[:height] / health[:height]).to_f.round(2)
 
   healths << health
 
@@ -25,7 +26,7 @@ def index_health(healths)
 
   puts "健康管理データを見たい人の登録番号を入力して下さい。"
   healths.each_with_index do |health, index|
-    puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒速度:#{(health[:distance]*0.001)/(health[:walktime]/60)}[km/h]"
+    puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒速度:#{health[:speed]}[km/h]"
   end
   input = gets.to_i
   
@@ -38,7 +39,7 @@ def show_health(health)
   puts "移動距離：#{health[:distance]}m(メートル)"
   puts "身長：#{health[:height]*100}cm(センチメートル)"
   puts "体重：#{health[:weight]}kg(キログラム)"
-  puts "BMI値:#{health[:bmi]}"
+  puts "BMI値:#{health[:bmi]}\n\n"
 end
 
 def data_health(healths)
@@ -89,7 +90,7 @@ option = gets.to_i
   when 4
     exit
   else
-    puts "受診内容[種類番号]が無い為、再度入力し直して下さい！\n"
+    puts "受診内容[種類番号]が無い為、再度入力し直して下さい！\n\n"
   end
 
 end
