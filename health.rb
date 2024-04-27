@@ -50,15 +50,17 @@ end
 def data_health(healths)
   healths.each_with_index do |health, index|
     puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒BMI(体脂肪率):#{health[:bmi]}"
+  
+    if health[:bmi] > 24
+      puts "痩せる事を考えましょう！"
+    elsif health[:bmi] < 20
+      puts "肥えても良いでしょう！"
+    else
+      puts "丁度良い感じです。"
+    end
+    
   end
   
-  if health[:bmi] > 24
-    puts "痩せる事を考えましょう！"
-  elsif health[:bmi] < 20
-    puts "肥えても良いでしょう！"
-  else
-    puts "丁度良い感じです。"
-  end
 end
 
 
