@@ -36,15 +36,15 @@ end
 def show_health(health)
   puts "氏名：#{health[:name]}"
   puts "年齢：#{health[:age]}歳"
-  puts "--------------------------------------------"
+  puts "............................................"
   puts "歩行時間：#{health[:walktime]}分"
   puts "移動距離：#{health[:distance]}m(メートル)"
   puts "速度：#{health[:speed]}km/h(キロメートル時)"
-  puts "--------------------------------------------"
+  puts "............................................"
   puts "身長：#{health[:height]*100}cm(センチメートル)"
   puts "体重：#{health[:weight]}kg(キログラム)"
   puts "BMI値:#{health[:bmi]}"
-  puts "--------------------------------------------"
+  puts "............................................"
 end
 
 def data_health(healths)
@@ -53,12 +53,15 @@ def data_health(healths)
   
     if health[:bmi] > 24
       puts "痩せる事を考えましょう！"
+      puts "--------------------------------------------"
     elsif health[:bmi] < 20
       puts "肥えても良いでしょう！"
+      puts "--------------------------------------------"
     else
       puts "丁度良い感じです。"
+      puts "--------------------------------------------"
     end
-    
+
   end
   
 end
