@@ -50,7 +50,8 @@ end
 def data_health(healths)
   healths.each_with_index do |health, index|
     puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒BMI(体脂肪率):#{health[:bmi]}"
-  
+    puts "--------------------------------------------"
+
     if health[:bmi] > 24
       puts "痩せる事を考えましょう！"
       puts "--------------------------------------------"
@@ -98,6 +99,7 @@ option = gets.to_i
   when 3
     stress_health(healths)
   when 4
+    puts "健康受診、お疲れさまでした。。。\n\n"
     exit
   else
     puts "受診内容[種類番号]が無い為、再度入力し直して下さい！\n\n"
