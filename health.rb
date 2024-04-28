@@ -47,6 +47,7 @@ def show_health(health)
   puts "............................................"
 end
 
+
 def data_health(healths)
   healths.each_with_index do |health, index|
     puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒BMI(体脂肪率):#{health[:bmi]}"
@@ -69,7 +70,18 @@ end
 
 
 def stress_health(healths)
+  puts "日頃の仕事・家事・生活などストレス度合の判定しますので、下記のランク化したストレスレベル[1～5]の数字を入力して下さい！"
+  puts "[レベル1]特に無くて楽々、[レベル2]ややあっても平気、[レベル3]何とかなってる、[レベル4]結構あって大変、[レベル5]ありすぎの過剰で要協力"
 
+  healths.each_with_index do |health, index|
+    puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒速度:#{health[:speed]}[km/h]  |  BMI(体脂肪率):#{health[:bmi]}"
+    puts "--------------------------------------------"
+    puts "ストレスレベルを選択して下さい。"
+    health[:stress] = level
+    gets = level.to_i
+
+  end
+  
 end
 
 def status_health(health)
