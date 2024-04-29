@@ -17,6 +17,8 @@ def register_health(healths)
   health[:speed] = (health[:distance]/health[:walktime]).to_f.round(1)
   health[:bmi] = (health[:weight] / health[:height] / health[:height]).to_f.round(2)
 
+  health[:stress]
+
   healths << health
 
   puts "\n"
@@ -25,7 +27,7 @@ end
 
 def index_health(healths)
 
-  puts "健康管理データを見たい人の登録番号を入力して下さい。"
+  puts "健康管理データの詳細をもっと見たい登録番号を入力して下さい。"
   healths.each_with_index do |health, index|
     puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒速度:#{health[:speed]}[km/h]"
   end
@@ -71,14 +73,14 @@ end
 
 def stress_health(healths)
   puts "日頃の仕事・家事・生活などストレス度合の判定しますので、下記のランク化したストレスレベル[1～5]の数字を入力して下さい！"
-  puts "[レベル1]特に無くて楽々、[レベル2]ややあっても平気、[レベル3]何とかなってる、[レベル4]結構あって大変、[レベル5]ありすぎの過剰で要協力"
+  puts "[レベル1]特に無くて楽々、[レベル2]ややあっても平気、[レベル3]何とかなってる、[レベル4]大変で協力欲しい、[レベル5]過剰で要改善"
 
   healths.each_with_index do |health, index|
     puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒速度:#{health[:speed]}[km/h]  |  BMI(体脂肪率):#{health[:bmi]}"
     puts "--------------------------------------------"
     puts "ストレスレベルを選択して下さい。"
+    level = gets.to_i
     health[:stress] = level
-    gets = level.to_i
 
   end
   
