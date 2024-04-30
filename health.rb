@@ -53,16 +53,15 @@ end
 def data_health(healths)
   healths.each_with_index do |health, index|
     puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒BMI(体脂肪率):#{health[:bmi]}"
-    puts "--------------------------------------------"
 
     if health[:bmi] > 24
-      puts "痩せる事を考えましょう！"
+      puts "⇒⇒痩せる事を考えましょう！"
       puts "--------------------------------------------"
     elsif health[:bmi] < 20
-      puts "肥えても良いでしょう！"
+      puts "⇒⇒肥えても良いでしょう！"
       puts "--------------------------------------------"
     else
-      puts "丁度良い感じです。"
+      puts "⇒⇒丁度良い感じです。"
       puts "--------------------------------------------"
     end
 
@@ -72,21 +71,34 @@ end
 
 
 def stress_health(healths)
-  puts "日頃の仕事・家事・生活などストレス度合の判定しますので、下記のランク化したストレスレベル[1～5]の数字を入力して下さい！"
-  puts "[レベル1]特に無くて楽々、[レベル2]ややあっても平気、[レベル3]何とかなってる、[レベル4]大変で協力欲しい、[レベル5]過剰で要改善"
+  puts "日頃の仕事・家事・生活などストレス度合の判定しますので、下記のランク化したストレス[レベル1～5]の数字を入力して下さい！"
+  puts "[レベル1]特に無くて楽々"
+  puts "[レベル2]ややあっても平気"
+  puts "[レベル3]何とかなってる"
+  puts "[レベル4]大変で協力欲しい"
+  puts "[レベル5]過剰で要改善"
 
   healths.each_with_index do |health, index|
     puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒速度:#{health[:speed]}[km/h]  |  BMI(体脂肪率):#{health[:bmi]}"
-    puts "--------------------------------------------"
-    puts "ストレスレベルを選択して下さい。"
+    puts "→→→ストレスレベルを選択して下さい。"
     level = gets.to_i
     health[:stress] = level
-
+    puts "--------------------------------------------"
   end
   
+  status_health(healths)
+
 end
 
-def status_health(health)
+def status_health(healths)
+
+  healths.each_with_index do |health, index|
+    puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒ストレスレベル:#{health[:stress]}  |  速度:#{health[:speed]}[km/h]  |  BMI(体脂肪率):#{health[:bmi]}"
+    puts "⇒⇒⇒リフレッシュのケア対策レベル"
+  end
+
+  puts "--------------------------------------------"
+
 end
 
 
