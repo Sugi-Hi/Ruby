@@ -13,9 +13,10 @@ while true do
   if (input_num > 0) && (input_num <= 7)
     puts "Your favorite color is (#{colors[input_num-1]})!!"
     favorite_colors << colors[input_num-1]
-    puts "Another more !?If nothing,please input other any numbers!"
+    puts "Another more!? If nothing,please input other any numbers!"
   else
     puts "Thank you for using!!Good by!!"
     exit
   end
+  puts "Your favorite colors are (#{favorite_colors})!!"
 end
