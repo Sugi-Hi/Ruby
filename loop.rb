@@ -11,19 +11,24 @@ while true do
   input_num = gets.to_i
 
   if (input_num > 0) && (input_num <= 7)
-    puts "Your favorite color is (#{colors[input_num-1]})!!"
     favorite_colors << colors[input_num-1]
-    puts "Another more!? If nothing,please input other any numbers!"
-
-    if (input_num > 0) && (input_num <= 7)
-      puts "Your favorite colors are (#{favorite_colors})!!"
+    
+    if favorite_colors.length == 1
+      puts "Your favorite color is (#{colors[input_num-1]})!!"
+      puts "Another more!? If nothing,please input other any numbers!"
     else
-      puts "Thank you for using !!See you!!"
-      exit
+      puts "Your favorite colors are (#{favorite_colors})!!"
+      puts "Another more!? If nothing,please input other any numbers!"
     end
 
   else
-    puts "Thank you for using!!Good bye!!"
+
+    if favorite_colors.length == 0
+      puts "Thank you for visiting!! Good bye!!"
+    else 
+      puts "Thank you for using!! See you!!"
+    end
+
     exit
   end
 
