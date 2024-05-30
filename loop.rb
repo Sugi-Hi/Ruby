@@ -1,5 +1,6 @@
 colors = ["あか", "あお", "きいろ", "みどり", "しろ", "くろ", "むらさき"]
 
+puts "The colors of first lists."
 colors.each_with_index do |color,index|
   puts "(#{index+1})色: #{color}"
 end
