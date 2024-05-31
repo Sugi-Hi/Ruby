@@ -1,4 +1,5 @@
 default_colors = ["しろ", "くろ", "あか", "あお", "きいろ"]
+custom_colors = default_colors
 
 puts "The colors of first lists."
 default_colors.each_with_index do |color,index|
@@ -7,8 +8,13 @@ end
 
 colors = ["みどり", "むらさき", "ちゃいろ", "だいだい", "はだ", "もも", "みず", "はいいろ", "こんいろ"]
 
-custom_colors = default_colors
 while true do
+  color = gets.chomp
+  if 
+    custom_colors << color
+  else
+    break
+  end
 end
 
 
