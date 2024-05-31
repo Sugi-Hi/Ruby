@@ -1,7 +1,7 @@
-colors = ["あか", "あお", "きいろ", "みどり", "しろ", "くろ", "むらさき"]
+basic_colors = ["あか", "あお", "きいろ", "しろ", "くろ"]
 
 puts "The colors of first lists."
-colors.each_with_index do |color,index|
+basic_colors.each_with_index do |color,index|
   puts "#{index+1}.#{color}色"
 end
 
