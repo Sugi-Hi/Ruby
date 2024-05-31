@@ -5,13 +5,15 @@ default_colors.each_with_index do |color,index|
   puts "#{index+1}.#{color}色"
 end
 
+custom_colors = default_colors
+
 favorite_colors = []
 
 while true do
-  puts "Please input your favorite color number from 1 to 7!(What's your favorite color?)"
+  puts "Please input your favorite color on above list number from 1 to last number,if anything!(What's your favorite color?)"
   input_num = gets.to_i
 
-  if (input_num > 0) && (input_num <= 7)
+  if (input_num > 0) && (input_num <= )
     favorite_colors << colors[input_num-1]
     
     if favorite_colors.length == 1
