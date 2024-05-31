@@ -2,7 +2,7 @@ colors = ["あか", "あお", "きいろ", "みどり", "しろ", "くろ", "む
 
 puts "The colors of first lists."
 colors.each_with_index do |color,index|
-  puts "(#{index+1})色: #{color}"
+  puts "#{index+1}.#{color}色"
 end
 
 favorite_colors = []
