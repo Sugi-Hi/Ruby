@@ -6,8 +6,8 @@ default_colors.each_with_index do |color,index|
   puts "#{index+1}.#{color}色"
 end
 
-colors = ["みどり", "むらさき", "ちゃいろ", "だいだい", "はだ", "もも", "みず", "はいいろ", "こんいろ"]
 
+colors = ["みどり", "むらさき", "ちゃいろ", "だいだい", "はだ", "もも", "みず", "はいいろ", "こんいろ"]
 while true do
   color = gets.chomp
   if custom_colors.include(colors)
@@ -16,8 +16,6 @@ while true do
     break
   end
 end
-
-
 
 favorite_colors = []
 while true do
