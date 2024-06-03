@@ -10,7 +10,7 @@ end
 colors = ["みどり", "むらさき", "ちゃいろ", "だいだい", "はだ", "もも", "みず", "はいいろ", "こんいろ"]
 while true do
   color = gets.chomp
-  if custom_colors.include(colors)
+  if custom_colors.includes(colors)
     custom_colors << color
   else
     break
