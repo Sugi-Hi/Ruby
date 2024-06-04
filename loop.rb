@@ -7,7 +7,7 @@ default_colors.each_with_index do |color,index|
 end
 
 
-colors = ["みどり", "むらさき", "ちゃいろ", "だいだい", "はだ", "もも", "みず", "はいいろ", "こんいろ"]
+colors = ["みどり", "むらさき", "ちゃ", "だいだい", "はだ", "もも", "みず", "はい", "こん", "しゅ", "きん","ぎん","とうめい" ]
 while true do
   puts "Please input your any other known colors in kana(ひらがな)!!"
   color = gets.chomp
