@@ -1,4 +1,4 @@
-default_colors = ["しろ", "くろ", "あか", "あお", "きいろ"]
+default_colors = ["しろ", "くろ", "あか", "あお", "き"]
 custom_colors = default_colors
 
 puts "The colors of first lists."
@@ -9,8 +9,10 @@ end
 
 colors = ["みどり", "むらさき", "ちゃいろ", "だいだい", "はだ", "もも", "みず", "はいいろ", "こんいろ"]
 while true do
+  puts "Please input your any other known colors in kana(ひらがな)!!"
   color = gets.chomp
-  if custom_colors.includes(colors)
+  
+  if custom_colors.include?(colors)
     custom_colors << color
   else
     break
