@@ -12,7 +12,7 @@ while true do
   puts "Please input your any other known colors in kana(ひらがな)!!"
   color = gets.chomp
   
-  if custom_colors.include?(colors)
+  if colors.include?(color)
     custom_colors << color
   else
     break
