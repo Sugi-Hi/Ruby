@@ -19,6 +19,12 @@ while true do
   end
 end
 
+
+puts "The colors of your inputted known lists ."
+custom_colors.each_with_index do |color,index|
+  puts "#{index+1}.#{color}色"
+end
+
 favorite_colors = []
 while true do
   puts "Please input your favorite color on above list number from 1 to last number,if anything!(What's your favorite color?)"
