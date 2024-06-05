@@ -28,8 +28,10 @@ loop{
   puts "Please continue in integer number input!! If you want to finish,please input 0 or brank!!"
   input = gets.to_i
     if input != 0 && input != ""
+      puts "Let's continue!!"
       redo
     else
+      puts "Thank you for using!!"
       break
     end
 
