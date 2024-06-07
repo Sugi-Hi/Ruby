@@ -4,5 +4,7 @@ def greeting
 end
 
 greeting do
-  puts "Nice to meet you!"
+  puts "Would you write any nickname!?"
+  name = gets.chomp
+  puts "Nice to meet you,#{name}!"
 end
