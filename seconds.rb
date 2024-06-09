@@ -6,4 +6,4 @@ hours = gets.to_i
 minutes = gets.to_i
 seconds = hours * 3600 + minutes * 60
 
-puts "#{name}さん、#{minutes}時間#{minutes}分は#{seconds}秒です！"
+puts "#{name}さん、#{hours}時間#{minutes}分は#{seconds}秒です！"
