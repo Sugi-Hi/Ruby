@@ -1,9 +1,9 @@
-puts "ようこそ！名前を入力してください"
+puts "名前を入力してください。"
 name = gets.chomp
 
-puts "秒数を知りたい時間を時(0~24)単位で入力してください"
+puts "秒数を知りたい時間を時(0~24)単位で入力してください。"
 hours = gets.to_i
-puts "秒数を知りたい時間を分(0~60)単位で入力してください"
+puts "秒数を知りたい時間を分(0~60)単位で入力してください。"
 minutes = gets.to_i
 seconds = hours * 3600 + minutes * 60
 
