@@ -28,6 +28,13 @@ seconds = hours * 3600 + minutes * 60
 loop{
   puts "名前を入力してください。"
   name = gets.chomp 
+  
+  if name == ""
+    puts "空白にせず何か入力してください。"
+    redo
+  else
+    puts "#{name}さん、秒数でお伝えします。 \n#{hours}時間#{minutes}分は#{seconds}秒です！"
+    break
+  end
 
-  puts "#{name}さん、秒数でお伝えします。 \n#{hours}時間#{minutes}分は#{seconds}秒です！"
 }
