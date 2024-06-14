@@ -49,8 +49,8 @@ while true do
   end
 
   input = gets.to_i
-  distance = ((input+1)*1000/3600) * seconds # 歩行スピード単位(メートル表示)：km/h⇒m/s
-  kilo_distance = ((input+1)*/3600) * seconds # 歩行スピード単位(キロメートル表示)
+  distance = ((input+1)*seconds)*1000/3600  # 歩行スピード単位(メートル表示)：km/h⇒m/s
+  kilo_distance = ((input+1)*seconds)/3600  # 歩行スピード単位(キロメートル表示)
   if input > 0 && input < 6
     puts "これから#{distance}m(#{kilo_distance}km)ほど進む予定です!" 
     exit
