@@ -38,3 +38,22 @@ loop{
   end
 
 }
+
+walk_speed = ["遅い", "やや遅い", "普通", "やや速い", "速い"]
+
+puts "歩くスピードについてお聞きしますが、次の番号1～5の中から選択してください。"
+while true do
+
+  walk_speed.each_with_index do |speed,num|
+    puts "#{num+1}.#{speed}(#{num+2}km/h程)"
+  end
+
+  input = gets.to_i
+  if input > 0 && input < 6
+    puts "これからm歩けます!"
+    exit
+  else 
+    puts "番号1～5の中から選択し直してください。" 
+  end
+  
+end
