@@ -1,7 +1,4 @@
-puts "名前を入力してください。"
-name = gets.chomp 
-
-
+#正しい入力までのループ処理
 puts "秒数を知りたい時間を時(0~24~)単位で入力してください。"
 while true do
   hours = gets.to_i
@@ -26,5 +23,10 @@ minutes = gets.to_i
   end
 end
 
+loop{
+  puts "名前を入力してください。"
+  name = gets.chomp 
+  
+  }
 seconds = hours * 3600 + minutes * 60
 puts "#{name}さん、秒数でお伝えします。 \n#{hours}時間#{minutes}分は#{seconds}秒です！"
