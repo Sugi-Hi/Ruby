@@ -52,7 +52,7 @@ while true do
   distance = ((input+1)*1000/3600) * seconds # 歩行スピード単位：km/h⇒m/s
 
   if input > 0 && input < 6
-    puts "これから#{distance}mほど進む予定です!" 
+    puts "これから#{distance}m(#{distance/1000}km)ほど進む予定です!" 
     exit
   else 
     puts "番号1～5の中から選択し直してください。" 
