@@ -11,7 +11,7 @@ while true do
 end
 
 
-puts "秒数を知りたい時間を分(0~60)単位で入力してください。"
+puts "秒数を知りたい時間を分(0~60~)単位で入力してください。"
 
 while true do
 minutes = gets.to_i
@@ -26,7 +26,8 @@ end
 seconds = hours * 3600 + minutes * 60
 
 loop{
-  puts "名前を入力してください。"
+
+  puts "名前(ニックネームなど)を入力してください。"
   name = gets.chomp 
   
   if name == ""
