@@ -78,11 +78,12 @@ while true
   puts "[2]終了"
   input = gets.to_i
 
-  if input == 0
+  case input
+  when 0
     register_student(students)
-  elsif input == 1
+  when 1
     index_student(students)
-  elsif input == 2
+  when 2
     exit
   else 
     puts "無効な受付番号なので再度0~2で選択入力して下さい!"
