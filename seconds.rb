@@ -1,5 +1,5 @@
 #適した入力までのループ処理
-puts "秒数を知りたい時間を時(0~24~)単位で入力してください。"
+puts "かけられる時間を時(0~24~)単位で入力してください。"
 while true do
   hours = gets.to_i
     if hours >= 0
@@ -11,7 +11,7 @@ while true do
 end
 
 
-puts "秒数を知りたい時間を分(0~60~)単位で入力してください。"
+puts "かけられる時間を分(0~60~)単位で入力してください。"
 
 while true do
 minutes = gets.to_i
@@ -34,7 +34,7 @@ loop{
     puts "空白にせず何か入力してください。"
     redo
   else
-    puts "#{name}さん、秒数でお伝えします。 \n#{hours}時間#{minutes}分は#{seconds}秒です！"
+    puts "#{name}さん、知りたい時間を秒数でお伝えします。 \n可能な#{hours}時間#{minutes}分は、#{seconds}秒ほどです！"
     break
   end
 
@@ -53,7 +53,7 @@ while true do
   distance = ((input+1)*seconds)*1000/3600  # 歩行スピード単位(メートル表示)：km/h⇒m/s
   kilo_distance = ((input+1)*seconds)/3600  # 歩行スピード単位(キロメートル表示)
   if input > 0 && input < 6
-    puts "これから#{distance}m(#{kilo_distance}km)ほど進む予定です!" 
+    puts "これから#{distance}m(#{kilo_distance}km)ほど進めます!" 
     exit
   else 
     puts "番号1～5の中から選択し直してください。" 
