@@ -15,12 +15,19 @@ puts "かけられる時間を分(0~60~)単位で入力してください。"
 
 while true do
 minutes = gets.to_i
-  if minutes >= 0
+  if minutes >= 0 && minutes < 60
     puts "#{minutes}分:#{minutes * 60}秒 "
     break
+  elsif 
+
   else
     puts "何分か整数(0~60~)で入力し直してください。"
   end
+end
+
+if hours == 0 && minutes == 0
+  puts "時間が無く、進められません…"
+  exit
 end
 
 seconds = hours * 3600 + minutes * 60
