@@ -18,8 +18,10 @@ minutes = gets.to_i
   if minutes >= 0 && minutes < 60
     puts "#{minutes}分:#{minutes * 60}秒 "
     break
-  elsif 
-
+  elsif minutes >= 60
+    hours += minutes / 60
+    minutes += minutes % 60
+    break
   else
     puts "何分か整数(0~60~)で入力し直してください。"
   end
