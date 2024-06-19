@@ -14,8 +14,8 @@ def register_health(healths)
   puts "体重(kg)を入力した下さい。"
   health[:weight] = (gets.to_f)
   
-  health[:speed] = (health[:distance] / (health[:walktime]/60) ).to_f.round(1)
-  health[:bmi] = (health[:weight] / health[:height] / health[:height]).to_f.round(2)
+  health[:speed] = health[:distance] / (health[:walktime]/60.0).to_f #単位(km/h)
+  health[:bmi] = health[:weight] / health[:height] / health[:height]
 
   health[:stress]
 
@@ -29,7 +29,7 @@ def index_health(healths)
 
   puts "健康管理データの詳細をもっと見たい登録番号を入力して下さい。"
   healths.each_with_index do |health, index|
-    puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒速度:#{health[:speed]}[km/h]"
+    puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒速度:#{(health[:speed]).round(1)}[km/h]"
   end
   input = gets.to_i
   
@@ -45,7 +45,7 @@ def show_health(health)
   puts "............................................"
   puts "身長：#{health[:height]*100}cm(センチメートル)"
   puts "体重：#{health[:weight]}kg(キログラム)"
-  puts "BMI値:#{health[:bmi]}"
+  puts "BMI値:#{(health[:bmi]).round(2)}"
   puts "............................................"
 end
 
