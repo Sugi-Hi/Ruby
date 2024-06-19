@@ -61,8 +61,10 @@ while true do
   end
 
   input = gets.to_i
-  distance = (( (input+1)*seconds )*1000/3600).to_f.round(0) # 歩行スピード単位(自然数メートル表示)：km/h⇒m/s
-  kilo_distance = ( distance/1000 ).to_f.round(2)  # 歩行スピード単位(小数第2位実数キロメートル表示)
+
+  speed = (input+1).to_f
+  distance = (seconds*(speed*(1000.0/3600.0))).to_f.round(0) # 歩行スピード単位(自然数メートル表示)：km/h⇒m/s
+  kilo_distance = (distance/1000.0).to_f.round(2)  # 歩行スピード単位(小数第2位実数キロメートル表示)
   if input > 0 && input < 6
     puts "#{name}さん、これから#{distance}m(#{kilo_distance}km)ほど進めます!" 
     exit
