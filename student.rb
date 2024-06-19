@@ -81,7 +81,7 @@ end
 
 students=[] # 全受験生徒の配列化
 
-while true
+while true do
 
   puts "生徒の成績データ表について、下記の[受付番号]で選択入力して下さい！"
   puts "[0]生徒の成績データ登録"
