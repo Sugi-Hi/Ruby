@@ -95,6 +95,7 @@ while true
   when 1
     index_student(students)
   when 2
+    puts "成績データ表は一旦保管しておきます..."
     exit
   else 
     puts "無効な受付番号なので再度0~2で選択入力して下さい!"
