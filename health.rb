@@ -17,7 +17,7 @@ def register_health(healths)
   health[:speed] = health[:distance] / (health[:walktime]/60.0).to_f #単位(km/h)
   health[:bmi] = health[:weight] / health[:height] / health[:height]
 
-  health[:stress]
+  health[:stress] = 3
 
   healths << health
 
@@ -27,21 +27,21 @@ end
 
 def index_health(healths)
 
-  puts "健康管理データの詳細をもっと見たい登録番号を入力して下さい。"
+  puts "健康管理データの詳細をもっと見たい受診者の方を、下記の[登録番号]で入力して下さい。"
   healths.each_with_index do |health, index|
-    puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒速度:#{(health[:speed]).round(1)}[km/h]"
+    puts "[#{index+1}]#{health[:name]}様、#{health[:age]}歳⇒速度:#{(health[:speed]).round(1)}[km/h]"
   end
   input = gets.to_i
   
   show_health(healths[input-1])
 end
 def show_health(health)
-  puts "氏名：#{health[:name]}"
+  puts "氏名：#{health[:name]}様"
   puts "年齢：#{health[:age]}歳"
   puts "............................................"
   puts "歩行時間：#{health[:walktime]}分"
   puts "移動距離：#{(health[:distance]*1000).to_f.round(0)}m(メートル)"
-  puts "速度：#{(health[:speed]*1000/3600).to_f.round(2)}m/s(メートル秒)"
+  puts "進行速度：#{(health[:speed]*1000/3600).to_f.round(2)}m/s(メートル秒)"
   puts "............................................"
   puts "身長：#{health[:height]*100}cm(センチメートル)"
   puts "体重：#{health[:weight]}kg(キログラム)"
@@ -52,7 +52,7 @@ end
 
 def data_health(healths)
   healths.each_with_index do |health, index|
-    puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒BMI(体脂肪率):#{health[:bmi]}"
+    puts "[#{index+1}]#{health[:name]}様、#{health[:age]}歳⇒BMI(体脂肪率):#{health[:bmi]}"
 
     if health[:bmi] > 24
       puts "⇒⇒痩せる事を考えましょう！"
@@ -71,33 +71,84 @@ end
 
 
 def stress_health(healths)
-  puts "日頃の仕事・家事・生活などストレス度合の判定しますので、下記のランク化したストレス[レベル1～5]の数字を入力して下さい！"
+  puts "日頃の仕事・家事・生活などの影響により、歩行・体質からストレス度合のレベル(1~5)で判定してみます。"
+  puts "通常の適度な歩行能力を数値(1.00~9.99[km/h])で入力して下さい。"
+  while true
+    proper_speed = gets.to_f
+    if proper_speed >= 1.00 && proper_speed < 10.00
+      break
+    else
+      puts "一般の適切と言われる範囲を数値(1.00~9.99[km/h])で入力して下さい。"
+    end
+  end
+  puts "--------------------------------------------"
   puts "[レベル1]特に無くて楽々"
   puts "[レベル2]ややあっても平気"
   puts "[レベル3]何とかなってる"
   puts "[レベル4]大変で協力欲しい"
   puts "[レベル5]過剰で要改善"
-
-  healths.each_with_index do |health, index|
-    puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒速度:#{health[:speed]}[km/h]  |  BMI(体脂肪率):#{health[:bmi]}"
-    puts "→→→ストレスレベルを選択して下さい。"
-    level = gets.to_i
-    health[:stress] = level
-    puts "--------------------------------------------"
-  end
-  
-  status_health(healths)
-
-end
-
-def status_health(healths)
-
-  healths.each_with_index do |health, index|
-    puts "[#{index+1}]#{health[:name]}、#{health[:age]}歳⇒ストレスレベル:#{health[:stress]}  |  速度:#{health[:speed]}[km/h]  |  BMI(体脂肪率):#{health[:bmi]}"
-    puts "⇒⇒⇒リフレッシュのケア対策レベル"
-  end
-
   puts "--------------------------------------------"
+  healths.each_with_index do |health, index|
+    puts "[#{index+1}]#{health[:name]}様、#{health[:age]}歳⇒歩行速度:#{health[:speed].round(1)}}[km/h]  |  BMI(体脂肪率):#{health[:bmi].round(2)}"
+    walk_stress = (health[:speed] - proper_speed).abs
+    if walk_stress > 5.0 || health[:bmi] < 17.0 || health[:bmi] > 27.0
+      level = 5
+    elsif walk_stress <= 5.0 && walk_stress >= 3.5
+      if health[:bmi] < 17.0 || health[:bmi] > 27.0
+        level = 4
+      elsif (health[:bmi] >= 17.0 && health[:bmi] < 20) || (health[:bmi] <= 27.0 && health[:bmi] > 24)
+        level = 3
+      else 
+        level = 2
+      end
+    elsif walk_stress < 3.5 && walk_stress >= 2.0
+      if health[:bmi] < 17.0 || health[:bmi] > 27.0
+        level = 3
+      elsif (health[:bmi] >= 17.0 && health[:bmi] < 20) || (health[:bmi] <= 27.0 && health[:bmi] > 24)
+        level = 2
+      else 
+        level = 1
+      end
+    elsif walk_stress <= 2.0 && walk_stress >= 1.0
+      if health[:bmi] < 17.0 || health[:bmi] > 27.0
+        level = 2
+      else 
+        level = 1
+      end
+    else
+      level = 1
+    end
+    puts "ストレスレベル：#{level}"
+    health[:stress] = level
+    puts "............................................"
+  end
+
+  puts "健康推進の為、ストレス度合の判定からケア対策プランを立てたい受診者の方を、上記の[登録番号]で入力して下さい！"
+  index = gets.to_i
+  status_health(healths[index-1])
+end
+def status_health(health)
+  puts "--------------------------------------------"
+  puts "氏名：#{health[:name]}様"
+  puts "年齢：#{health[:age]}歳"
+  puts "健康状態：ケア対策ランク#{health[:stress]}"
+  puts "............................................"
+  puts "ストレスレベル判定：#{health[:stress]}  |  速度:#{health[:speed].round(1)}[km/h]  |  BMI(体脂肪率):#{health[:bmi].round(2)}"
+    puts "⇒⇒⇒リフレッシュにおいて、必要なケア対策ランク"
+  puts "--------------------------------------------"
+  case health[:stress]
+  when 1
+    puts "[ランク1]わざわざ対策しなくても、いつも通りで平気."
+  when 2
+    puts "[ランク2]趣味を探して、リフレッシュできる機会を増やす.。"
+  when 3
+    puts "[ランク3]健康推進の生活習慣・食品の購入などを心がける。！"
+  when 4    
+    puts "[ランク4]ケアプランなど協力してくれるカウンセラーを求める！！"
+  when 5
+    puts "[ランク5]医療・福祉など専門医・訓練士のサポートが必要不可欠となる！！！"
+
+  end
 
 end
 
@@ -111,7 +162,7 @@ puts "+*+健康診断への受診内容[種類番号]を入力して下さい+*+
 puts "[0]健康診断での受診者を登録する"
 puts "[1]健康診断の全受診者を一覧リストで表示する"
 puts "[2]健康状態の体脂肪率の数値データ評価を列挙する"
-puts "[3]現在のストレスチェックから健康状態をレベル表記する"
+puts "[3]現在の健康状態をストレスチェックからレベル表記してケア対策を調べる"
 puts "[4]終了する"
 option = gets.to_i
 
