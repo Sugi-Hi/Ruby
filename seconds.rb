@@ -58,19 +58,19 @@ loop {
   end
 
 
-walk_speed = ["遅い", "やや遅い", "普通", "やや速い", "速い"]
+speed_rank = [{rank: "遅い", speed:2}, {rank: "やや遅い", speed:3}, {rank: "普通", speed:4}, {rank: "やや速い", speed:5}, {rank: "速い", speed:6}]
 puts "--------------------------------------------"
 puts "歩くスピードについてお聞きしますが、次の番号1～5の中から選択してください。"
 puts "→→→→→→→→→→→→→→→→→→→→→→"
 while true do
 
-  walk_speed.each_with_index do |speed,num|
-    puts "#{num+1}.#{speed}(#{num+2}km/h程)"
+  speed_rank.each_with_index do |sr,num|
+    puts "#{num+1}.#{sr[:rank]}(#{sr[:speed]}km/h程)"
   end
 
   input = gets.to_i
 
-  speed = (input+1).to_f
+  speed = (speed_rank[input-1][:speed]).to_f
   distance = (seconds*(speed*(1000.0/3600.0))).to_f.round(0) # 歩行スピード単位(自然数メートル表示)：km/h⇒m/s
   kilo_distance = (distance/1000.0).to_f.round(2)  # 歩行スピード単位(小数第2位実数キロメートル表示)
   if input > 0 && input < 6
