@@ -6,15 +6,15 @@ def register_health(healths)
   puts "年齢を入力した下さい。"
   health[:age] = gets.to_i
   puts "歩行時間(分)を入力した下さい。"
-  health[:walktime] = (gets.to_i) / 60  # 単位(分)⇒(時)
-  puts "移動距離(m)を入力した下さい。"
-  health[:distance] = (gets.to_i) / 1000  # 単位(m)⇒(km)
+  health[:walktime] = gets.to_i # 単位(分)
+  puts "移動距離(km)を入力した下さい。"
+  health[:distance] = gets.to_f  # 単位(km)
   puts "身長(cm)を入力した下さい。"
   health[:height] = (gets.to_f) * 0.01  # 単位(cm)⇒(m)
   puts "体重(kg)を入力した下さい。"
   health[:weight] = (gets.to_f)
   
-  health[:speed] = (health[:distance]/health[:walktime]).to_f.round(1)
+  health[:speed] = (health[:distance] / (health[:walktime]/60) ).to_f.round(1)
   health[:bmi] = (health[:weight] / health[:height] / health[:height]).to_f.round(2)
 
   health[:stress]
@@ -40,8 +40,8 @@ def show_health(health)
   puts "年齢：#{health[:age]}歳"
   puts "............................................"
   puts "歩行時間：#{health[:walktime]}分"
-  puts "移動距離：#{health[:distance]}m(メートル)"
-  puts "速度：#{health[:speed]}km/h(キロメートル時)"
+  puts "移動距離：#{(health[:distance]*1000).to_f.round(0)}m(メートル)"
+  puts "速度：#{(health[:speed]*1000/3600).to_f.round(2)}m/s(メートル秒)"
   puts "............................................"
   puts "身長：#{health[:height]*100}cm(センチメートル)"
   puts "体重：#{health[:weight]}kg(キログラム)"
