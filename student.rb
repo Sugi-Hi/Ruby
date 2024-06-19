@@ -22,12 +22,13 @@ def register_student(students)
 end
 
 def index_student(students) # 全受験生徒における一覧の表示
-  
+  puts "-----------------------------------------------"
   puts "生徒一覧表#受験者"
   students.each_with_index do |student, index|  # index:初期値0、数値化できない!
   puts "受験番号： 00#{index+1}  氏名：#{student[:name]} 、#{student[:room]}組"
   end
   puts "受験生徒数：#{students.length}名"
+  puts "-----------------------------------------------"
   average(students) # 全生徒の受験した各5教科の平均点：students.each do |s|  // Jap+=s[:jap]/students.length, Math+=s[:math]/students.length, Social+=s[:social]/students.length, Science+=s[:science]/students.length, Eng+=s[:eng]/students.length // end
 
   puts "見たい生徒を受験番号(上位ケタの0を抜いて)で選択入力して下さい！"
