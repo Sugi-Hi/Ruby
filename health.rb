@@ -133,8 +133,11 @@ def status_health(health)
   puts "年齢：#{health[:age]}歳"
   puts "健康状態：ケア対策ランク#{health[:stress]}"
   puts "............................................"
-  puts "ストレスレベル判定：#{health[:stress]}  |  速度:#{health[:speed].round(1)}[km/h]  |  BMI(体脂肪率):#{health[:bmi].round(2)}"
-    puts "⇒⇒⇒リフレッシュにおいて、必要なケア対策ランク"
+  puts "ストレスレベル判定：#{health[:stress]}"
+  puts "速度:#{health[:speed].round(1)}[km/h]"
+  puts "BMI(体脂肪率):#{health[:bmi].round(2)}"
+  puts "............................................"
+  puts "⇒⇒⇒リフレッシュにおいて、必要なケア対策ランク"
   puts "--------------------------------------------"
   case health[:stress]
   when 1
