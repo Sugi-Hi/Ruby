@@ -70,12 +70,12 @@ while true do
 
   input = gets.to_i
 
-  speed = (speed_rank[input-1][:speed]).to_f
+  speed = (speed_rank[input-1][:speed])
   distance = (seconds*(speed*(1000.0/3600.0))).to_f # 歩行スピード単位(自然数メートル表示)：km/h⇒m/s
   kilo_distance = (distance/1000.0).to_f  # 歩行スピード単位(小数第2位実数キロメートル表示)
   if input > 0 && input < 6
     puts "--------------------------------------------"
-    puts "#{name}さん、これから#{distance.to_f.round(0)}m(#{kilo_distance.to_f.round(2)}km)ほど進めます!" 
+    puts "#{name}さん、これから#{distance.to_f.round(0)}m程歩き、(#{kilo_distance.to_f.floor(2)}km)は進めます!" 
     exit
   else 
     puts "番号1～5の中から選択し直してください。" 
