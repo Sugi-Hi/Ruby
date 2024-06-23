@@ -91,26 +91,26 @@ def stress_health(healths)
   healths.each_with_index do |health, index|
     puts "[#{index+1}]#{health[:name]}様、#{health[:age]}歳⇒歩行速度:#{health[:speed].round(1)}}[km/h]  |  BMI(体脂肪率):#{health[:bmi].round(2)}"
     walk_stress = (health[:speed] - proper_speed).abs
-    if walk_stress > 5.0 || health[:bmi] < 17.0 || health[:bmi] > 27.0
+    if walk_stress > 5.0 || health[:bmi] < 17 || health[:bmi] > 27
       level = 5
     elsif walk_stress <= 5.0 && walk_stress >= 3.5
-      if health[:bmi] < 17.0 || health[:bmi] > 27.0
+      if health[:bmi] < 17 || health[:bmi] > 27
         level = 4
-      elsif (health[:bmi] >= 17.0 && health[:bmi] < 20) || (health[:bmi] <= 27.0 && health[:bmi] > 24)
+      elsif (health[:bmi] >= 17 && health[:bmi] < 20) || (health[:bmi] <= 27 && health[:bmi] > 24)
         level = 3
       else 
         level = 2
       end
     elsif walk_stress < 3.5 && walk_stress >= 2.0
-      if health[:bmi] < 17.0 || health[:bmi] > 27.0
+      if health[:bmi] < 17 || health[:bmi] > 27
         level = 3
-      elsif (health[:bmi] >= 17.0 && health[:bmi] < 20) || (health[:bmi] <= 27.0 && health[:bmi] > 24)
+      elsif (health[:bmi] >= 17 && health[:bmi] < 20) || (health[:bmi] <= 27 && health[:bmi] > 24)
         level = 2
       else 
         level = 1
       end
     elsif walk_stress <= 2.0 && walk_stress >= 1.0
-      if health[:bmi] < 17.0 || health[:bmi] > 27.0
+      if health[:bmi] < 17 || health[:bmi] > 27
         level = 2
       else 
         level = 1
