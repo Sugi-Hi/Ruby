@@ -32,9 +32,17 @@ def index_health(healths)
   healths.each_with_index do |health, index|
     puts "[#{index+1}]#{health[:name]}様、#{health[:age]}歳⇒速度:#{(health[:speed]).round(1)}[km/h]"
   end
-  input = gets.to_i
-  
-  show_health(healths[input-1])
+
+  loop{
+    input = gets.to_i
+    if input > 0 && input <= healths.length
+      show_health(healths[input-1])
+      break
+    else
+      puts "健康管理データの詳細は、[登録番号1~#{healths.length}]で入力して下さい。"
+      redo
+    end
+  }
 end
 def show_health(health)
   puts "氏名：#{health[:name]}様"
@@ -73,7 +81,7 @@ end
 
 def stress_health(healths)
   puts "日頃の仕事・家事・生活などの影響により、歩行・体質からストレス度合のレベル(1~5)で判定してみます。"
-  puts "あなたにとって、適度と思う歩行速度を数値(1.00~9.99[km/h])<一般平均:4.00[km/h]>で入力して下さい。"
+  puts "受診者にとって、適度と思う歩行速度を数値(1.00~9.99[km/h])<一般平均:4.00[km/h]>で入力して下さい。"
   while true
     proper_speed = gets.to_f
     if proper_speed >= 1.00 && proper_speed < 10.00
@@ -128,8 +136,16 @@ def stress_health(healths)
  
   puts "健康推進の為、ストレス度合の判定から、予防へのケア対策プランが必要な受診者の方を、上記の[登録番号]で入力して下さい！"
   index = gets.to_i
-
-  status_health(healths[index-1])
+  loop{
+    input = gets.to_i
+    if input > 0 && input <= healths.length
+      status_health(healths[index-1])
+      break
+    else
+      puts "健康管理データの状態は、[登録番号1~#{healths.length}]で入力し直して下さい。"
+      redo
+    end
+  }
 end
 def status_health(health)
   puts "--------------------------------------------"
@@ -165,7 +181,7 @@ healths = []
 
 while true do
 
-puts "+*+ヘルスケアとして、下記の受診内容[チェック番号]を入力して下さい+*+"
+puts "+*+ヘルスケアとして、下記の受診内容[チェック番号0~4]を入力して下さい+*+"
 puts "[0]健康診断での受診者を登録する"
 puts "[1]健康診断の全受診者を一覧リストで表示する"
 puts "[2]身体的な健康状態、体脂肪率の数値データ評価を列挙する"
@@ -186,7 +202,7 @@ option = gets.to_i
     puts "健康受診、お疲れさまでした。。。\n\n"
     exit
   else
-    puts "受診内容[種類番号]が無い為、再度入力し直して下さい！\n\n"
+    puts "受診内容の番号が無い為、再度入力し直して下さい！\n\n"
   end
 
 end
