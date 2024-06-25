@@ -18,6 +18,7 @@ def register_health(healths)
   health[:bmi] = health[:weight] / health[:height] / health[:height]
 
   health[:stress] = 3
+  health[:care] = 3
 
   healths << health
 
@@ -72,7 +73,7 @@ end
 
 def stress_health(healths)
   puts "日頃の仕事・家事・生活などの影響により、歩行・体質からストレス度合のレベル(1~5)で判定してみます。"
-  puts "あなたにとって、適度と思う歩行能力を数値(1.00~9.99[km/h])で入力して下さい。"
+  puts "あなたにとって、適度と思う歩行速度を数値(1.00~9.99[km/h])<一般平均:4.00[km/h]>で入力して下さい。"
   while true
     proper_speed = gets.to_f
     if proper_speed >= 1.00 && proper_speed < 10.00
@@ -81,15 +82,10 @@ def stress_health(healths)
       puts "適切の範囲を数値(1.00~9.99[km/h])で入力し直して下さい。"
     end
   end
-  puts "--------------------------------------------"
-  puts "[レベル1]特に無くて楽々"
-  puts "[レベル2]ややあっても平気"
-  puts "[レベル3]何とかなってる"
-  puts "[レベル4]大変で協力欲しい"
-  puts "[レベル5]過剰で要改善"
+
   puts "--------------------------------------------"
   healths.each_with_index do |health, index|
-    puts "[#{index+1}]#{health[:name]}様、#{health[:age]}歳⇒歩行速度:#{health[:speed].round(1)}}[km/h]  |  BMI(体脂肪率):#{health[:bmi].round(2)}"
+    puts "[#{index+1}]#{health[:name]}様、#{health[:age]}歳⇒歩行速度:#{health[:speed].round(1)}}[km/h] | BMI(体脂肪率):#{health[:bmi].round(2)}"
     walk_stress = (health[:speed] - proper_speed).abs
     if walk_stress > 5.0 || health[:bmi] < 17 || health[:bmi] > 27
       level = 5
@@ -123,21 +119,29 @@ def stress_health(healths)
     puts "............................................"
   end
 
-  puts "健康推進の為、ストレス度合の判定からケア対策プランを立てたい受診者の方を、上記の[登録番号]で入力して下さい！"
+  puts "[レベル1]特に無くて平気"
+  puts "[レベル2]ややあっても大丈夫"
+  puts "[レベル3]努力で何とかなってる"
+  puts "[レベル4]大変で協力欲しい"
+  puts "[レベル5]過剰な為に要改善"
+  puts "--------------------------------------------"
+ 
+  puts "健康推進の為、ストレス度合の判定から、予防へのケア対策プランが必要な受診者の方を、上記の[登録番号]で入力して下さい！"
   index = gets.to_i
+
   status_health(healths[index-1])
 end
 def status_health(health)
   puts "--------------------------------------------"
   puts "氏名：#{health[:name]}様"
   puts "年齢：#{health[:age]}歳"
-  puts "健康状態：ケア対策ランク#{health[:stress]}"
   puts "............................................"
   puts "ストレスレベル判定：#{health[:stress]}"
   puts "速度:#{health[:speed].round(1)}[km/h]"
   puts "BMI(体脂肪率):#{health[:bmi].round(2)}"
   puts "............................................"
-  puts "⇒⇒⇒リフレッシュにおいて、必要なケア対策ランク"
+  puts "★リフレッシュにおいて、必要なケア対策ランク"
+  puts "⇒⇒⇒健康状態：ケア対策ランク#{health[:stress]}"
   puts "--------------------------------------------"
   case health[:stress]
   when 1
