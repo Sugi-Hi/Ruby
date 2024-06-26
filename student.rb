@@ -55,9 +55,11 @@ def show_student(student) # 選択した受験生徒の詳細]
   puts "................................................."
   puts "国語：#{student[:jap]}点、数学：#{student[:math]}点、社会：#{student[:social]}点、理科：#{student[:science]}点、英語：#{student[:eng]}点"
   puts "5教科の合計点⇒#{student[:sum]}点"  # 各生徒の5教科合計点：{student[:jap]+student[:math]+student[:social]+student[:science]+student[:eng]}
-  puts "偏差値：計算中"
+  puts "5教科の偏差値：#{student[:hensa]}"
   puts "----------------------------------------------------------------------------------------------"
 end
+
+
 def average(students) # 平均点
   sum_jap=0
   sum_math=0
@@ -72,12 +74,19 @@ def average(students) # 平均点
     sum_science  += student[:science]
     sum_eng      += student[:eng]
     sum_subjects += student[:sum]
-    
-    sum_hensa = (student[:sum]-sum_subjects/students.length)*(student[:sum]-sum_subjects/students.length) / students.length
-  end  
-  puts "各教科の平均点⇒ 国語：#{sum_jap/students.length}点、数学：#{sum_math/students.length}点、社会：#{sum_social/students.length}点、理科：#{sum_science/students.length}点、英語：#{sum_eng/students.length}点、合計平均：#{sum_subjects/students.length}点"
+  end
+  
+  hensa(student)
+
+  puts "各教科の平均点⇒ 国語：#{sum_jap/students.length}点、数学：#{sum_math/students.length}点、社会：#{sum_social/students.length}点、理科：#{sum_science/students.length}点、英語：#{sum_eng/students.length}点、5教科平均:#{sum_subjects/students.length}点"
+  return (sum_subjects/students.length)
 end
 
+def hensa(student)
+  sum_vari += (student[:sum]-sum_subjects/students.length)**2 / students.length
+  sum_hensa = (sum_subjects - (sum_subjects/students.length )) / Math.sqrt(sum_vari) * 10.0 +50.0
+  student[:hensa] = sum_hensa
+end
 
 students=[] # 全受験生徒の配列化
 
