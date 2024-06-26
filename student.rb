@@ -86,7 +86,7 @@ def average(students)
   hensa(students,sum_ave)
 
   puts "各教科の平均点⇒ 国語：#{sum_jap/students.length}点、数学：#{sum_math/students.length}点、社会：#{sum_social/students.length}点、理科：#{sum_science/students.length}点、英語：#{sum_eng/students.length}点"
-  puts "5教科平均:#{sum_ave}}点"
+  puts "5教科平均点:#{sum_ave}}点"
 end
 
 # \\\\\\\\\\\\\\\\\\\ 偏差値 \\\\\\\\\\\\\\\\\\\
@@ -97,13 +97,15 @@ def hensa(students,sum_ave)
   end
 
   students.each do |student|
-    sum_hensa = ((student[:sum] - sum_ave)/Math.sqrt(sum_vari)) * 10.0 +50.0
+    sum_hensa = ((student[:sum] - sum_ave) / Math.sqrt(sum_vari)) * 10.0 +50.0 # sqrt()：平方根関数
     student[:hensa] = sum_hensa
   end
 
 end
 
+
 students=[] # 全受験生徒の配列化
+
 
 while true do
 
