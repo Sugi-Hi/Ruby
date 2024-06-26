@@ -1,3 +1,4 @@
+# \\\\\\\\\\\\\\\\\\\ 受験生徒の5教科点数の登録 \\\\\\\\\\\\\\\\\\\
 def register_student(students)
   puts "氏名を入力して下さい:"
   name = gets.chomp
@@ -19,10 +20,13 @@ def register_student(students)
   
   # 各受験生徒のデータ成績のハッシュ化
   student = {name: name, room: room, jap: japanese, math: math, social: social, science: science, eng: english, sum: five_subjects } 
+  student[:hensa] = 0
+
   students << student # 一人一人の受験生徒を全生徒へ追加
 end
 
-def index_student(students) # 全受験生徒における一覧の表示
+# \\\\\\\\\\\\\\\\\\\ 全受験生徒における一覧の表示 \\\\\\\\\\\\\\\\\\\
+def index_student(students) 
   puts "----------------------------------------------------------------------------------------------"
   puts "生徒一覧表#受験者"
   puts "................................................."
@@ -46,10 +50,10 @@ def index_student(students) # 全受験生徒における一覧の表示
     redo
   end
   }
-
 end
 
-def show_student(student) # 選択した受験生徒の詳細]
+# \\\\\\\\\\\\\\\\\\\ 選択した受験生徒の詳細 \\\\\\\\\\\\\\\\\\\
+def show_student(student) 
   puts "----------------------------------------------------------------------------------------------"
   puts "氏名：#{student[:name]} 、#{student[:room]}組"
   puts "................................................."
@@ -59,14 +63,16 @@ def show_student(student) # 選択した受験生徒の詳細]
   puts "----------------------------------------------------------------------------------------------"
 end
 
-
-def average(students) # 平均点
-  sum_jap=0
-  sum_math=0
-  sum_social=0
-  sum_science=0
-  sum_eng=0
-  sum_subjects=0 # 合計点の加算も忘れず初期値定義
+# \\\\\\\\\\\\\\\\\\\ 平均点 \\\\\\\\\\\\\\\\\\\
+def average(students) 
+ # 合計点の加算も忘れず初期値定義
+  sum_jap = 0
+  sum_math = 0
+  sum_social = 0
+  sum_science = 0
+  sum_eng = 0
+  sum_subjects = 0
+  sum_ave = 0
   students.each do |student|
     sum_jap      += student[:jap]
     sum_math     += student[:math]
@@ -75,17 +81,24 @@ def average(students) # 平均点
     sum_eng      += student[:eng]
     sum_subjects += student[:sum]
   end
-  
-  hensa(student)
+  sum_ave = sum_subjects/students.length
 
-  puts "各教科の平均点⇒ 国語：#{sum_jap/students.length}点、数学：#{sum_math/students.length}点、社会：#{sum_social/students.length}点、理科：#{sum_science/students.length}点、英語：#{sum_eng/students.length}点、5教科平均:#{sum_subjects/students.length}点"
-  return (sum_subjects/students.length)
+  hensa(students,sum_ave)
+
+  puts "各教科の平均点⇒ 国語：#{sum_jap/students.length}点、数学：#{sum_math/students.length}点、社会：#{sum_social/students.length}点、理科：#{sum_science/students.length}点、英語：#{sum_eng/students.length}点"
+  puts "5教科平均:#{sum_ave}}点"
 end
 
-def hensa(student)
-  sum_vari += (student[:sum]-sum_subjects/students.length)**2 / students.length
-  sum_hensa = (sum_subjects - (sum_subjects/students.length )) / Math.sqrt(sum_vari) * 10.0 +50.0
-  student[:hensa] = sum_hensa
+def hensa(students,sum_ave)
+  sum_vari = 0
+  students.each do |student|
+    sum_vari += (student[:sum]-sum_ave)**2 / students.length
+  end
+
+  students.each do |student|
+    sum_hensa = ((student[:sum] - sum_ave)/Math.sqrt(sum_vari)) * 10.0 +50.0
+    student[:hensa] = sum_hensa
+  end
 end
 
 students=[] # 全受験生徒の配列化
