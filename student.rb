@@ -55,11 +55,11 @@ end
 # \\\\\\\\\\\\\\\\\\\ 選択した受験生徒の詳細 \\\\\\\\\\\\\\\\\\\
 def show_student(student) 
   puts "----------------------------------------------------------------------------------------------"
-  puts "氏名：#{student[:name]} 、#{student[:room]}組"
+  puts "○氏名：#{student[:name]} 、#{student[:room]}組"
   puts "................................................."
-  puts "国語：#{student[:jap]}点、数学：#{student[:math]}点、社会：#{student[:social]}点、理科：#{student[:science]}点、英語：#{student[:eng]}点"
+  puts "・国語：#{student[:jap]}点、数学：#{student[:math]}点、社会：#{student[:social]}点、理科：#{student[:science]}点、英語：#{student[:eng]}点"
   puts "5教科の合計点⇒#{student[:sum]}点"  # 各生徒の5教科合計点：{student[:jap]+student[:math]+student[:social]+student[:science]+student[:eng]}
-  puts "5教科の偏差値：#{student[:hensa]}"
+  puts "5教科の偏差値：#{student[:hensa].to_f.round(2)}"
   puts "----------------------------------------------------------------------------------------------"
 end
 
@@ -81,24 +81,24 @@ def average(students)
     sum_eng      += student[:eng]
     sum_subjects += student[:sum]
   end
-  sum_ave = sum_subjects/students.length
+  sum_ave = (sum_subjects/students.length).to_f
 
   hensa(students,sum_ave)
 
   puts "各教科の平均点⇒ 国語：#{sum_jap/students.length}点、数学：#{sum_math/students.length}点、社会：#{sum_social/students.length}点、理科：#{sum_science/students.length}点、英語：#{sum_eng/students.length}点"
-  puts "5教科平均点:#{sum_ave}}点"
+  puts "5教科平均点:#{sum_ave.to_f.round(0)}点"
 end
 
 # \\\\\\\\\\\\\\\\\\\ 偏差値 \\\\\\\\\\\\\\\\\\\
 def hensa(students,sum_ave)
   sum_vari = 0
   students.each do |student|
-    sum_vari += (student[:sum]-sum_ave)**2 / students.length
+    sum_vari += ((student[:sum]-sum_ave)**2 / students.length).to_f
   end
 
   students.each do |student|
     sum_hensa = ((student[:sum] - sum_ave) / Math.sqrt(sum_vari)) * 10.0 +50.0 # sqrt()：平方根関数
-    student[:hensa] = sum_hensa
+    student[:hensa] = sum_hensa.to_f
   end
 
 end
