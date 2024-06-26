@@ -16,6 +16,9 @@ time = Time.now
 date = Date.today
 
 puts "ルート9=#{num.to_i}"
-puts "ルート3=#{num1.to_f.round(3)}"
+puts "ルート3=#{num1.to_f.round(3)}\n"
+
 puts "現在:#{time}"
-puts "今日:#{date}"
+puts "................"
+puts "時刻　#{time.strftime("%H:%M:%S")}"
+puts "今日　#{date}\n"
