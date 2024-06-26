@@ -89,6 +89,7 @@ def average(students)
   puts "5教科平均:#{sum_ave}}点"
 end
 
+# \\\\\\\\\\\\\\\\\\\ 偏差値 \\\\\\\\\\\\\\\\\\\
 def hensa(students,sum_ave)
   sum_vari = 0
   students.each do |student|
@@ -99,6 +100,7 @@ def hensa(students,sum_ave)
     sum_hensa = ((student[:sum] - sum_ave)/Math.sqrt(sum_vari)) * 10.0 +50.0
     student[:hensa] = sum_hensa
   end
+
 end
 
 students=[] # 全受験生徒の配列化
