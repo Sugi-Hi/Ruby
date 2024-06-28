@@ -10,7 +10,8 @@ input = gets.chomp
 
 puts mixer(input)
 
-num = 5**2
+num_1 = 7**2
+num_2 = 3**5
 num1 = Math.sqrt(9)
 num2 = Math.sqrt(3)
 time = Time.now
@@ -19,7 +20,8 @@ date = Date.today
 days = ["日", "月", "火", "水", "木", "金", "土"]
 day = date.strftime("%u").to_i
 
-puts "5の2乗=#{num.to_i}"
+puts "7の2乗=#{num_1.to_i}"
+puts "3の5乗=#{num_2.to_i}"
 puts "ルート9=#{num1.to_i}"
 puts "ルート3=#{num2.to_f.round(3)}\n"
 
