@@ -88,8 +88,7 @@ def average(students)
   puts "各教科の平均点⇒ 国語：#{sum_jap/students.length}点、数学：#{sum_math/students.length}点、社会：#{sum_social/students.length}点、理科：#{sum_science/students.length}点、英語：#{sum_eng/students.length}点"
   puts "5教科平均点:#{sum_ave.to_f.round(0)}点"
 end
-
-# \\\\\\\\\\\\\\\\\\\ 偏差値 \\\\\\\\\\\\\\\\\\\
+# \\\\\\\\\\\\\\\\\\\ 分散⇒標準偏差、偏差値の計算 \\\\\\\\\\\\\\\\\\\
 def hensa(students,sum_ave)
   sum_vari = 0
   students.each do |student|
@@ -103,6 +102,14 @@ def hensa(students,sum_ave)
 
 end
 
+# \\\\\\\\\\\\\\\\\\\ 合計点・偏差値 \\\\\\\\\\\\\\\\\\\
+def rank_student(students)
+  students = students[:sum].max(students.length)
+
+  students.each_with_index do |student, rank|
+    puts "#{rank+1}位：#{student[:sum]}点、偏差値#{student[:hensa]}"
+  end
+end
 
 students=[] # 全受験生徒の配列化
 
@@ -112,7 +119,8 @@ while true do
   puts "生徒の成績データ表について、下記の[受付番号]で選択入力して下さい！"
   puts "[0]生徒の成績データ登録"
   puts "[1]全生徒の成績データ一覧"
-  puts "[2]終了"
+  puts "[2]全生徒の順位表"
+  puts "[3]終了"
   input = gets.to_i
 
   case input
@@ -121,6 +129,8 @@ while true do
   when 1
     index_student(students)
   when 2
+    rank_student(students)
+  when 3
     puts "成績データ表は一旦保管しておきます..."
     exit
   else 
