@@ -24,6 +24,7 @@ puts "7の2乗=#{num_1.to_i}"
 puts "3の5乗=#{num_2.to_i}"
 puts "ルート9=#{num1.to_i}"
 puts "ルート3=#{num2.to_f.round(3)}\n"
+puts "#{days.max(7)}"
 
 puts "現在:#{time}"
 puts "・・・・・・・・・・・・・"
