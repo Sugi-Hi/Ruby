@@ -104,7 +104,7 @@ end
 
 # \\\\\\\\\\\\\\\\\\\ 合計点・偏差値 \\\\\\\\\\\\\\\\\\\
 def rank_student(students)
-  (students[:sum].to_i).sort{ |start, learn| learn <=> start }
+  students.sort_by{|student| student[:sum]}
   students.each_with_index do |student, rank|
     puts "#{rank+1}位：#{student[:sum]}点、偏差値#{student[:hensa]}"
   end
