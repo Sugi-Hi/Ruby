@@ -19,9 +19,8 @@ def register_student(students)
   five_subjects = japanese + math + social + science + english # 合計点
   
   # 各受験生徒のデータ成績のハッシュ化
-  student = {name: name, room: room, jap: japanese, math: math, social: social, science: science, eng: english, sum: five_subjects}
+  student = {name: name, room: room, jap: japanese, math: math, social: social, science: science, eng: english, sum: five_subjects, no: (students.length+1)}
   student[:hensa] = 0
-  student[:no] = students.length + 1
 
   students << student # 一人一人の受験生徒を全生徒へ追加
 end
@@ -31,8 +30,8 @@ def index_student(students)
   puts "----------------------------------------------------------------------------------------------"
   puts "生徒一覧表#受験者"
   puts "................................................."
-  students.each do |student|  # index:初期値0、数値化できない!
-    puts "受験番号：[00#{student[:no]}]  氏名：#{student[:name]} 、#{student[:room]}組"
+  students.each_with_index do |student, index|  # index:初期値0、数値化できない!
+    puts "受験番号：[00#{index+1}]  氏名：#{student[:name]} 、#{student[:room]}組"
   end
   puts "受験生徒数：#{students.length}名"
   puts "----------------------------------------------------------------------------------------------"
@@ -109,9 +108,9 @@ def rank_student(students)
   puts "成績ランキング順位表#受験者番号"
   puts "................................................."
   ranking = students
-  ranking.reverse!{|student| student[:sum]}
-  ranking.each_with_index do |student, rank|
-    puts "#{rank+1}位：[00#{student[:no]}]#{student[:sum]}点、偏差値#{student[:hensa]}"
+  ranking.reverse!{|rank| rank[:sum]}
+  ranking.each_with_index do |rank, index|
+    puts "#{index+1}位：[00#{rank[:no]}]#{rank[:sum]}点、偏差値#{rank[:hensa]}"
   end
   puts "----------------------------------------------------------------------------------------------"
 
