@@ -30,7 +30,7 @@ def index_student(students)
   puts "----------------------------------------------------------------------------------------------"
   puts "生徒一覧表#受験者"
   puts "................................................."
-  students.sort!{|student| student[:no]}
+  students.sort_by{|student| student[:no]}
   students.each do |student|  # index:初期値0、数値化できない!
     puts "受験番号：[00#{student[:no]}]  氏名：#{student[:name]} 、#{student[:room]}組"
   end
@@ -108,10 +108,9 @@ def rank_student(students)
   puts "----------------------------------------------------------------------------------------------"
   puts "成績ランキング順位表#受験者番号"
   puts "................................................."
-  ranking = students
-  ranking.reverse!{|rank| rank[:sum]}
-  ranking.each_with_index do |rank, index|
-    puts "#{index+1}位：[00#{rank[:no]}]#{rank[:sum]}点、偏差値#{rank[:hensa]}"
+  students.reverse!{|student| student[:sum]}
+  students.each_with_index do |student, rank|
+    puts "#{rank+1}位：[00#{student[:no]}]#{student[:sum]}点、偏差値#{student[:hensa]}"
   end
   puts "----------------------------------------------------------------------------------------------"
 
