@@ -30,8 +30,9 @@ def index_student(students)
   puts "----------------------------------------------------------------------------------------------"
   puts "生徒一覧表#受験者"
   puts "................................................."
-  students.each_with_index do |student, index|  # index:初期値0、数値化できない!
-    puts "受験番号：[00#{index+1}]  氏名：#{student[:name]} 、#{student[:room]}組"
+  students.sort!{|student| student[:no]}
+  students.each do |student|  # index:初期値0、数値化できない!
+    puts "受験番号：[00#{student[:no]}]  氏名：#{student[:name]} 、#{student[:room]}組"
   end
   puts "受験生徒数：#{students.length}名"
   puts "----------------------------------------------------------------------------------------------"
