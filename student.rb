@@ -32,7 +32,7 @@ def index_student(students)
   puts "................................................."
   students.sort_by!{|student| student[:no]} # sort：上り順(整順)の独立操作(他に依存しない、破壊的メソッド=!)
   students.each do |student|  # index:初期値0、数値化できない!
-    puts "受験番号：[00#{student[:no]}]  氏名：#{student[:name]} 、#{student[:room]}組"
+    puts "氏名：#{student[:name]} 、#{student[:room]}組"
   end
   puts "受験生徒数：#{students.length}名"
   puts "----------------------------------------------------------------------------------------------"
@@ -126,7 +126,7 @@ while true do
   puts "[0]生徒の成績データ登録"
   puts "[1]全生徒の成績データ一覧"
   puts "[2]全生徒のランキング順位表"
-  puts "[3]終了"
+  puts "[3]データ保存せず終了"
   input = gets.to_i
 
   case input
@@ -137,10 +137,10 @@ while true do
   when 2
     rank_student(students)
   when 3
-    puts "成績データ表は一旦保管しておきます..."
+    puts "成績データ表は保管されませんので、必要データはメモをおススメします！"
     exit
   else 
-    puts "無効な受付番号なので再度0~2で選択入力して下さい!"
+    puts "無効な受付番号なので再度0~3で選択入力して下さい!"
     puts "----------------------------------------------------------------------------------------------"
   end
 
