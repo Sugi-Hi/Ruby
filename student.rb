@@ -32,6 +32,7 @@ def index_student(students)
   puts "................................................."
   students.sort_by!{|student| student[:no]} # sort：上り順(整順)の独立操作(他に依存しない、破壊的メソッド=!)
   students.each do |student|  # index:初期値0、数値化できない!
+    printf("受験番号：[%03d]",student[:no])
     puts "氏名：#{student[:name]} 、#{student[:room]}組"
   end
   puts "受験生徒数：#{students.length}名"
