@@ -111,7 +111,7 @@ def rank_student(students)
   puts "................................................."
   students.reverse!{|student| student[:sum]}  # reverse：高い順(逆順)の独立操作(他に依存しない、破壊的メソッド=!)
   students.each_with_index do |student, rank|
-    puts "#{rank+1}位：[00#{student[:no]}]#{student[:sum]}点、偏差値#{student[:hensa]}"
+    puts "#{rank+1}位：[00#{student[:no]}]#{student[:sum]}点、偏差値#{student[:hensa].to_f.round(2)}"
   end
   puts "----------------------------------------------------------------------------------------------"
 
