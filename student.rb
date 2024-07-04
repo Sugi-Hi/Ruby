@@ -22,6 +22,8 @@ def register_student(students)
   student = {name: name, room: room, jap: japanese, math: math, social: social, science: science, eng: english, sum: five_subjects, no: (students.length+1)}
   student[:hensa] = 0
 
+  students.sort_by!{|student| student[:no]} # sort：上り順(整順)の独立操作(他に依存しない、破壊的メソッド=!)
+  
   students << student # 一人一人の受験生徒を全生徒へ追加
 
 end
